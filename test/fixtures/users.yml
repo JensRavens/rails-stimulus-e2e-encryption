@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :bigint           not null, primary key
+#  name       :string           not null
+#  keys       :text             default([]), not null, is an Array
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  keys: 
+
+two:
+  name: MyString
+  keys: 

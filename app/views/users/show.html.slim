@@ -1,0 +1,10 @@
+h1 = @user.email
+- @messages.each do |message|
+  div style=("text-align: right" if message.sender_id == current_user.id) data-controller="decrypt" data-decrypt-content=message.content
+    div data-target="decrypt.content"
+    small = l message.created_at, format: :short
+= form_with model: @message, url: user_messages_path(@user), data: { controller: "encrypt", encrypt_keys: (@user.keys + current_user.keys).to_json } do |f|
+  = f.hidden_field :content, data: { target: "encrypt.output" }
+  = f.text_area :content, name: nil, data: { target: "encrypt.input", action: "change->encrypt#encrypt" }
+  = f.submit
+  

@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  postgres:
+    image: "postgres:12.1"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./tmp/volumes/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"

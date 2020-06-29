@@ -1,0 +1,24 @@
+h1 Conversations
+p Hello #{current_user.email}!
+- if current_user.keys.any?
+  ul
+    - @users.each do |user|
+      li = link_to user.email, user
+h2 Key Management
+- if current_user.keys.any?
+  h3 Your Keys
+  - current_user.keys.each do |key|
+    pre = key
+h3 Add Keys
+= form_with model: current_user, data: { controller: "keys" } do |f|
+  button data-action="click->keys#generate" Generate Keys
+  br
+  = f.label :public_key
+  br
+  = f.text_area :public_key, required: true, data: { target: "keys.publicKey" }
+  br
+  = f.label :private_key
+  br
+  = f.text_area :private_key, name: nil, data: { target: "keys.privateKey" }
+  br
+  = f.submit "Add Key", data: { action: "click->keys#register" }

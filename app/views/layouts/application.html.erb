@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsExample</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if current_user %>
+      <nav>
+        <span><%= link_to current_user.email, root_path %></span>
+        <span style="float: right"><%= link_to "logout", destroy_user_session_path, method: :delete %></span>
+      </nav>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
