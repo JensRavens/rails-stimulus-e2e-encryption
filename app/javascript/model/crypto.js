@@ -1,4 +1,9 @@
+export async function loadPGP() {
+  await import("../lib/openpgp");
+}
+
 export async function parseKeys(plain_keys) {
+  await loadPGP();
   return await Promise.all(
     plain_keys.map((plain_key) =>
       openpgp.key.readArmored(plain_key).then((data) => data.keys[0])
@@ -7,6 +12,7 @@ export async function parseKeys(plain_keys) {
 }
 
 export async function encryptText(text, keys) {
+  await loadPGP();
   const message = openpgp.message.fromText(text);
   const { data: encrypted } = await openpgp.encrypt({
     message,
@@ -16,6 +22,7 @@ export async function encryptText(text, keys) {
 }
 
 export async function decryptText(text, keys) {
+  await loadPGP();
   const message = await openpgp.message.readArmored(text);
   const options = {
     message,
@@ -41,6 +48,7 @@ export async function registerKey(plain) {
 }
 
 export async function generateKey() {
+  await loadPGP();
   return await openpgp.generateKey({
     curve: "curve25519",
     userIds: [{ name: "Anonymous", email: "mail@example.com" }],

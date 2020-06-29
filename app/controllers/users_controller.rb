@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:index, :show]
+  before_action :require_login
 
   def index
     @users = User.where.not(keys: []).where.not(id: current_user.id).order(email: :asc)

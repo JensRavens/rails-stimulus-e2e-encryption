@@ -1,5 +1,4 @@
 import { Controller } from "stimulus";
-import "../lib/openpgp";
 import { parseKeys } from "../model/crypto";
 
 export default class extends Controller {
@@ -16,7 +15,6 @@ export default class extends Controller {
       message,
       publicKeys: this.keys,
     });
-    console.log(this.inputTarget.value, encrypted);
     this.outputTarget.value = encrypted;
   }
 }

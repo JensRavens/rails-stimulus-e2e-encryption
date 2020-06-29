@@ -19,6 +19,6 @@ h3 Add Keys
   br
   = f.label :private_key
   br
-  = f.text_area :private_key, name: nil, data: { target: "keys.privateKey" }
+  = f.text_area :private_key, name: nil, required: true, data: { target: "keys.privateKey" }
   br
   = f.submit "Add Key", data: { action: "click->keys#register" }

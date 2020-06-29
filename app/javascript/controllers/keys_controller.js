@@ -1,6 +1,5 @@
 import { Controller } from "stimulus";
-import "../lib/openpgp";
-import { parseKeys, generateKey, registerKey } from "../model/crypto";
+import { generateKey, registerKey } from "../model/crypto";
 
 export default class extends Controller {
   static targets = ["privateKey", "publicKey"];
