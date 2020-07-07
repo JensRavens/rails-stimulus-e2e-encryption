@@ -1,24 +1,9 @@
-# README
+# Rails End-to-End Encryption Example
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an example project to illustrate end-to-end encryption with Rails and openpgp.js. See the 
+blogpost at https://jensravens.com/e2e-encryption-with-rails/ for a full exaplanation on how this works.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Development Setup
+- spin up postgres via `docker-compose up`
+- install dependencies with `yarn` and `bundle`
+- start the server via `rails s`
